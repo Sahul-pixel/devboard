@@ -1,35 +1,35 @@
 # GOAL: Create ci part with Lint and push ocde to github 
 
 name: CI-devboard
+
 on:
- push:
-      branches: [advanced]
+  push:
+    branches: [advanced]
 
-      jobs:
-      frontend:
-      runs-on: ubuntu-latest
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
 
-      steps:
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v7
 
-     -name: checkout the code
-      uses: action/checkout@v7
-
-     -name: set node.js
-      uses: actions/setup-node@v7
-      with:
-        node-version: '20'
+      - name: Set Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '20'
         cache: 'nmp'
         cache-dependency-path: 'Devboard-demo\devboard\frontend'
         working-directory: frontend 
       
-     -name: install packages
-      run: npm ci
-      working-directory: frontend 
+      - name: install packages
+        run: npm ci
+        working-directory: frontend 
 
-     -name: run lint
-      run: num run lint
-      working-directory: frontend 
+      - name: run lint
+        run: num run lint
+        working-directory: frontend 
 
-     -name: test code
-      run: num run test
-      working-directory: frontend 
+      - name: test code
+        run: num run test
+        working-directory: frontend 
