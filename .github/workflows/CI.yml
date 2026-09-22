@@ -50,11 +50,7 @@ jobs:
 
           name: CI-devboard
 
-on:
-  push:
-    branches: [advanced]
 
-jobs:
   backend:
     runs-on: ubuntu-latest
 
